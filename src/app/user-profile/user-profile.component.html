@@ -1,0 +1,18 @@
+<div>
+    <div class="card mb-5">
+        <img [src]="User.photo" alt="image" class="card-img-top" />
+        <div class="card-body">
+            <h5 class="card-title">Nom : {{User.name}}</h5>
+            <p class="card-text">Prénom : {{User.firstName}}</p>
+            <p [style.visibility]="none">Age : {{User.age}}</p>
+            <p class="card-text">Citation : {{User.quote}}</p>
+            <input class="form-control" placeholder="Entre ta Citation" [(ngModel)]="User.quote">
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-primary" (click)="displayNone()">Afficher/Masquer mon âge</button>
+        </div>
+    </div>
+</div>
+
+
+
