@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Signup } from '../sign-up';
 
 @Component({
   selector: 'app-sign-up',
@@ -6,7 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent implements OnInit {
-  email = 'hello@gmail.com';
+
+    mail: Signup = {
+      email: 'hello@gmail.com'
+  }
 
   constructor() { }
 
