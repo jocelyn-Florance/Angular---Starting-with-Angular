@@ -1,3 +1,5 @@
+import { RouterModule } from '@angular/router';
+import { ROUTES } from './app.routes';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -10,13 +12,6 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { HighlightDirective } from './highlight.directive';
 
 
-/*
-const appRoutes: Routes = [
-  { path: 'crisis-center', component: CrisisListComponent },
-  { path: 'heroes', component: HeroListComponent },
-];
-*/
-
 @NgModule({
     declarations: [
         AppComponent,
@@ -27,7 +22,8 @@ const appRoutes: Routes = [
     imports: [
         BrowserModule,
         AppRoutingModule,
-        FormsModule
+        FormsModule,
+        RouterModule.forRoot(ROUTES)
     ],
     providers: [],
     bootstrap: [AppComponent]
