@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { UserProfile } from '../user-profile';
+import {Component, OnInit} from '@angular/core';
+import { UserProfile } from '../core/models/user-profile';
+
 
 @Component({
     selector: 'app-user-profile',
@@ -21,6 +22,7 @@ export class UserProfileComponent implements OnInit {
 
     ngOnInit() {
     }
+
 
     displayNone() {
         if (this.none === 'hidden') {
