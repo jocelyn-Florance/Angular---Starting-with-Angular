@@ -7,7 +7,6 @@ import { Signup } from '../core/models/sign-up';
     styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent implements OnInit {
-
     person: Signup = {
         username: 'jocelyn',
         email: 'hello@gmail.com'

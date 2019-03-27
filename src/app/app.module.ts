@@ -1,5 +1,3 @@
-import { RouterModule } from '@angular/router';
-import { ROUTES } from './app.routes';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -23,7 +21,6 @@ import { HighlightDirective } from './highlight.directive';
         BrowserModule,
         AppRoutingModule,
         FormsModule,
-        RouterModule.forRoot(ROUTES)
     ],
     providers: [],
     bootstrap: [AppComponent]
