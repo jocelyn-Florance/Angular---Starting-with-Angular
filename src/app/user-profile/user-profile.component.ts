@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import { UserProfile } from '../core/models/user-profile';
 
-
 @Component({
     selector: 'app-user-profile',
     templateUrl: './user-profile.component.html',
@@ -16,6 +15,7 @@ export class UserProfileComponent implements OnInit {
         quote : '',
         photo : 'https://randomuser.me/api/portraits/lego/2.jpg',
     };
+    UserForm: any = {};
 
     constructor() {
     }
@@ -23,6 +23,9 @@ export class UserProfileComponent implements OnInit {
     ngOnInit() {
     }
 
+    formTest() {
+        console.log(this.UserForm);
+    }
 
     displayNone() {
         if (this.none === 'hidden') {

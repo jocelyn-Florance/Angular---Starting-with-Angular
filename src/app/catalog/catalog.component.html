@@ -1,0 +1,33 @@
+<h1>catalog works!</h1>
+
+
+<h2 class="">Produit sans prix</h2>
+
+<ul>
+  <ng-container *ngFor="let item of Item;">
+      <li *ngIf="!item.price">
+        {{item.name | uppercase}}
+      </li>
+  </ng-container>
+</ul>
+
+
+
+<h2 class="mt-4">produit sans promo</h2>
+<ul>
+<ng-container *ngFor="let item of Item;">
+    <li *ngIf="!item.promo">
+      {{item.name }}
+    </li>
+</ng-container>
+</ul>
+
+
+<h2  class="mt-4">Tout les produit</h2>
+<ul>
+<ng-container *ngFor="let item of Item;">
+  <li *ngIf="item.price && item.promo ">
+    {{item.name }}</li>
+</ng-container>
+</ul>
+

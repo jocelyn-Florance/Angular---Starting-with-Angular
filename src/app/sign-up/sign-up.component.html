@@ -1,6 +1,29 @@
 <div class="text-center card p-5">
-    <h1>Username</h1><input class="form-control" type="text" name="username" placeholder="{{ person.username }}"/>
-    <h1>Email</h1><input class="form-control" type="email" name="email" placeholder="{{ person.email }}"/>
+
+    <form (ngSubmit)="formTest()" #myForm="ngForm">
+        <div class="m-4">
+            <span class="alert alert-success" *ngIf="myForm.submitted">Formulaire envoyer {{myForm.submitted}}</span>
+        </div>
+        <div class="m-4">
+            <label for="user">User</label>
+            <input id="user" name="user" class="form-control" type="text" [(ngModel)]="model.username" #user="ngModel" required minlength="4" maxlength="25">
+        </div>
+        <div *ngIf="user.errors && myForm.submitted">
+            <span class="alert alert-danger m-5" *ngIf="user.errors.required">Le champ user est requis</span>
+            <span class="alert alert-danger m-5" *ngIf="user.errors.minlength">Le champ user doit dépasser 4 caractères</span>
+            <span class="alert alert-danger m-5" *ngIf="user.errors.maxlength">Le champ user ne doit pas dépasser 25 caractères</span>
+        </div>
+        <div class="m-4">
+            <label for="email">Email</label>
+            <input id="email" name="email" class="form-control" type="email" [(ngModel)]="model.email" #Email="ngModel" required>
+        </div>
+        <div *ngIf="Email.errors && myForm.submitted">
+            <span class="alert alert-danger m-5" *ngIf="Email.errors.required">Le champ email est requis</span>
+            <span class="alert alert-danger m-5" *ngIf="Email.errors.email">Le champ email est invalide</span>
+        </div>
+        <button class="btn btn-primary m-3" type="submit">Sauvegarder</button>
+    </form>
+
 </div>
 
 

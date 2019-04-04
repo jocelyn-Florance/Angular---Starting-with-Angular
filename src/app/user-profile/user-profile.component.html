@@ -1,4 +1,5 @@
 <div>
+
     <div class="card mb-5">
         <img [src]="User.photo" alt="image" class="card-img-top" />
         <div class="card-body">
@@ -12,6 +13,30 @@
             <button class="btn btn-primary" (click)="displayNone()">Afficher/Masquer mon âge</button>
         </div>
     </div>
+
+
+
+    <h3>Form clasique</h3>
+    <div class="card mb-5">
+        <div class="card-body">
+
+            <form (ngSubmit)="formTest()">
+                <label for="username"></label>
+                <input id="username" name="firstName" class="form-control" placeholder="firstname" [(ngModel)]="UserForm.firstName">
+                <label for="firstname"></label>
+                <input id="firstname" name="LastName" class="form-control" placeholder="lastname" [(ngModel)]="UserForm.lastName">
+                <label for="street"></label>
+                <input id="street" name="street" class="form-control" placeholder="street" [(ngModel)]="UserForm.street">
+                <label for="city"></label>
+                <input id="city" name="city" class="form-control" placeholder="city" [(ngModel)]="UserForm.city">
+                <button class="btn btn-primary" type="submit">Envoyer</button>
+            </form>
+
+        </div>
+
+    </div>
+
+
 </div>
 
 

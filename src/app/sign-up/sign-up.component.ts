@@ -7,6 +7,11 @@ import { Signup } from '../core/models/sign-up';
     styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent implements OnInit {
+    model: Signup = {
+        username: null,
+        email: null
+    };
+    UserForm: any = {};
     person: Signup = {
         username: 'jocelyn',
         email: 'hello@gmail.com'
@@ -15,6 +20,11 @@ export class SignUpComponent implements OnInit {
     constructor() { }
 
     ngOnInit() {
+        console.log(this.model);
+    }
+
+    formTest() {
+        console.log(this.UserForm);
     }
 
 }
