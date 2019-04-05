@@ -1,0 +1,114 @@
+<app-navbar></app-navbar>
+
+<div class="container mt-5">
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <h2 class="text-center">Formulaire pour ajouter un chat</h2>
+
+            <form (ngSubmit)="formKitten()" #myForm="ngForm">
+
+                <div class="m-4">
+                    <span class="alert alert-success" *ngIf="myForm.submitted">Formulaire envoyer</span>
+                </div>
+
+                <div class="m-4">
+                    <label for="name">Name</label>
+                    <input id="name" name="name" class="form-control" [(ngModel)]="userForm.name" type="text">
+                </div>
+
+                <div class="m-4">
+                    <label for="race">Race</label>
+                    <input id="race" name="race" class="form-control" [(ngModel)]="userForm.race" type="text">
+                </div>
+
+                <div class="m-4">
+                    <label for="date">Date de naisance</label>
+                    <input id="date" name="date" class="form-control" [(ngModel)]="userForm.years" type="text">
+                </div>
+
+                <div class="m-4">
+                    <label for="lien">Lien</label>
+                    <input id="lien" name="lien" class="form-control" [(ngModel)]="userForm.lien" type="text">
+                </div>
+
+                <button [className]="myForm.submitted ? 'btn btn-success btn-block' : 'btn btn-danger btn-block'"
+                        class="" type="submit">
+                    Ajouter
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <div class="row mb-5">
+
+        <div class="col-md-6 mt-4 p-3 card">
+            <p class="text-center">List Chat a adopter</p>
+
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Race</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Ajouter</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <ng-container *ngFor="let kitten of Kitten;">
+                    <tr>
+                        <td>{{kitten.name}}</td>
+                        <td>{{kitten.race}}</td>
+                        <td>{{kitten.year}}</td>
+                        <td><img [src]="kitten.image" alt="image" class="card-img-top"/></td>
+                        <td>
+                            <button class="btn btn-success" (click)="addKitten(kitten)">Ajouter</button>
+                        </td>
+                    </tr>
+                </ng-container>
+
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-md-6 mt-4 p-3 card">
+
+            <p class="text-center">Profil</p>
+
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Race</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Supprimer</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <ng-container *ngFor="let user of User;">
+                    <tr>
+                        <td>{{user.name}}</td>
+                        <td>{{user.race}}</td>
+                        <td>{{user.year}}</td>
+                        <td><img [src]="user.image" alt="image" class="card-img-top"/></td>
+                        <td>
+                            <button class="btn btn-danger" (click)="deleteKitten(user)">Supprimer</button>
+                        </td>
+                    </tr>
+                </ng-container>
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</div>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Signup } from '../core/models/sign-up';
+import { Signup } from '../../core/models/sign-up';
 
 @Component({
     selector: 'app-sign-up',
@@ -7,10 +7,7 @@ import { Signup } from '../core/models/sign-up';
     styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent implements OnInit {
-    model: Signup = {
-        username: null,
-        email: null
-    };
+    model: Signup = new Signup();
     UserForm: any = {};
     person: Signup = {
         username: 'jocelyn',

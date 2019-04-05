@@ -1,0 +1,52 @@
+<app-navbar></app-navbar>
+
+
+<div class="container mt-5">
+
+    <div class="col-md-4">
+        <div class="card mb-5">
+            <img [src]="User.photo" alt="image" class="card-img-top"/>
+            <div class="card-body">
+                <h5 class="card-title">Nom : {{User.name}}</h5>
+                <p class="card-text">Prénom : {{User.firstName}}</p>
+                <p [style.visibility]="none">Age : {{User.age}}</p>
+                <p class="card-text">Citation : {{User.quote}}</p>
+                <input class="form-control" placeholder="Entre ta Citation" [(ngModel)]="User.quote">
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-primary" (click)="displayNone()">Afficher/Masquer mon âge</button>
+            </div>
+        </div>
+    </div>
+
+
+    <h3>Form clasique</h3>
+    <div class="card mb-5">
+        <div class="card-body">
+
+            <form (ngSubmit)="formTest()">
+                <label for="username"></label>
+                <input id="username" name="firstName" class="form-control" placeholder="firstname"
+                       [(ngModel)]="UserForm.firstName">
+                <label for="firstname"></label>
+                <input id="firstname" name="LastName" class="form-control" placeholder="lastname"
+                       [(ngModel)]="UserForm.lastName">
+                <label for="street"></label>
+                <input id="street" name="street" class="form-control" placeholder="street"
+                       [(ngModel)]="UserForm.street">
+                <label for="city"></label>
+                <input id="city" name="city" class="form-control" placeholder="city" [(ngModel)]="UserForm.city">
+                <button class="btn btn-primary mt-3" type="submit">Envoyer</button>
+            </form>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+
+
+

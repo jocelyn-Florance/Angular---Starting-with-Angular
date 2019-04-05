@@ -1,4 +1,7 @@
-<div class="text-center card p-5">
+<app-navbar></app-navbar>
+
+
+<div class="container text-center card p-5 mt-5">
 
     <form (ngSubmit)="formTest()" #myForm="ngForm">
         <div class="m-4">
@@ -15,7 +18,7 @@
         </div>
         <div class="m-4">
             <label for="email">Email</label>
-            <input id="email" name="email" class="form-control" type="email" [(ngModel)]="model.email" #Email="ngModel" required>
+            <input id="email" name="email" class="form-control" type="email" [(ngModel)]="model.email" #Email="ngModel" required email>
         </div>
         <div *ngIf="Email.errors && myForm.submitted">
             <span class="alert alert-danger m-5" *ngIf="Email.errors.required">Le champ email est requis</span>
