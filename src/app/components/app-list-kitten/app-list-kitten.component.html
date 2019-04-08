@@ -2,47 +2,13 @@
 
 <div class="container mt-5">
 
-    <div class="row">
-        <div class="col-md-12">
-
-            <h2 class="text-center">Formulaire pour ajouter un chat</h2>
-
-            <form (ngSubmit)="formKitten()" #myForm="ngForm">
-
-                <div class="m-4">
-                    <span class="alert alert-success" *ngIf="myForm.submitted">Formulaire envoyer</span>
-                </div>
-
-                <div class="m-4">
-                    <label for="name">Name</label>
-                    <input id="name" name="name" class="form-control" [(ngModel)]="userForm.name" type="text">
-                </div>
-
-                <div class="m-4">
-                    <label for="race">Race</label>
-                    <input id="race" name="race" class="form-control" [(ngModel)]="userForm.race" type="text">
-                </div>
-
-                <div class="m-4">
-                    <label for="date">Date de naisance</label>
-                    <input id="date" name="date" class="form-control" [(ngModel)]="userForm.years" type="text">
-                </div>
-
-                <div class="m-4">
-                    <label for="lien">Lien</label>
-                    <input id="lien" name="lien" class="form-control" [(ngModel)]="userForm.lien" type="text">
-                </div>
-
-                <button [className]="myForm.submitted ? 'btn btn-success btn-block' : 'btn btn-danger btn-block'"
-                        class="" type="submit">
-                    Ajouter
-                </button>
-
-            </form>
-
-        </div>
-
-    </div>
+    <app-app-create-kitten
+            [id]="id"
+            [name]="name"
+            [race]="race"
+            [year]="year"
+            [image]="image"
+    ></app-app-create-kitten>
 
     <div class="row mb-5">
 

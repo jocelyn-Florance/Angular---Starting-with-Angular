@@ -1,0 +1,28 @@
+<app-navbar></app-navbar>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">name</th>
+    <th scope="col">price</th>
+    <th scope="col">image</th>
+  </tr>
+  </thead>
+  <tbody>
+
+<ng-container *ngFor="let cocktail of cocktailService.getCocktails();">
+    <tr *ngIf="cocktail.name">
+      <td>
+       {{cocktail.name}}
+      </td>
+      <td>
+        {{cocktail.price}}
+      </td>
+      <td>
+        {{cocktail.img}}
+      </td>
+    </tr>
+</ng-container>
+
+  </tbody>
+</table>

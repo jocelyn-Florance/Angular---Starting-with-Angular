@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-app-create-kitten',
@@ -9,15 +9,12 @@ export class AppCreateKittenComponent implements OnInit {
   @Input() id: number;
   @Input() name: string;
   @Input() race: string;
-  @Input() date: string;
-  @Input() photo: string;
+  @Input() year: string;
+  @Input() image: string;
 
   constructor() { }
 
   ngOnInit() {
-  }
-
-  formKitten() {
   }
 
 

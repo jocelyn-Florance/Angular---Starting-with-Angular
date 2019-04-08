@@ -1,0 +1,55 @@
+<div class="container">
+
+  <h1>Search movie</h1>
+
+  <form (ngSubmit)="orderForm.valid && onSubmit()" [formGroup]="orderForm" #myForm="ngForm">
+    <div>
+      Form submitted ? {{myForm.submitted}}
+      Form valid ? {{orderForm.valid}}
+      Form invalid ? {{orderForm.valid}}
+    </div>
+    <div>
+      <label for="identifiant">Identifiant</label>
+      <input id="identifiant" name="identifiant" type="text" formControlName="identifiant">
+    </div>
+    <div *ngIf="orderForm.controls.identifiant.errors">
+      <span *ngIf="orderForm.controls.identifiant.errors.required">Le champ identifiant est requis</span>
+    </div>
+    <div>
+      <label for="titre">Titre</label>
+      <input id="titre" name="titre" type="text" formControlName="titre">
+    </div>
+    <div *ngIf="orderForm.controls.titre.errors">
+      <span *ngIf="orderForm.controls.titre.errors.required">Le champ titre est requis</span>
+      <span *ngIf="orderForm.controls.titre.errors.max">La quantité maximal doit être inférieur à 5</span>
+    </div>
+    <div>
+      <label for="type"></label>
+
+    </div>
+    <div *ngIf="orderForm.controls.type.errors">
+      <span *ngIf="orderForm.controls.type.errors.required">Le champ type est requis</span>
+    </div>
+    <div>
+      <label for="years">Years</label>
+      <input id="years" name="yaers" type="number" formControlName="years">
+    </div>
+    <div *ngIf="orderForm.controls.years.errors">
+      <span *ngIf="orderForm.controls.years.errors.required">Le champ years est requis</span>
+    </div>
+    <div>
+      <label formArrayName="fiche" *ngFor="let fiches of orderForm.controls.fiche.controls; let i = index">
+        <input type="checkbox" [formControlName]="i">
+        {{fiche[i].name}}
+      </label>
+    </div>
+    <div *ngIf="orderForm.controls.fiche.errors">
+      <span *ngIf="orderForm.controls.fiche.errors.required">Le champ fiche est requis</span>
+      <span *ngIf="orderForm.controls.fiche.errors.email">L'adresse email doit être valide</span>
+    </div>
+
+    <button type="reset">Restaurer</button>
+    <button type="submit">Sauvegarder</button>
+  </form>
+
+</div>

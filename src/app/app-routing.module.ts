@@ -5,7 +5,8 @@ import {UserProfileComponent} from './components/user-profile/user-profile.compo
 import {SignUpComponent} from './components/sign-up/sign-up.component';
 import {CatalogComponent} from './components/catalog/catalog.component';
 import {AppListKittenComponent} from './components/app-list-kitten/app-list-kitten.component';
-import {AppCreateKittenComponent} from './components/app-create-kitten/app-create-kitten.component';
+import {SearchMovieComponent} from './components/search-movie/search-movie.component';
+import {CocktailListComponent} from './components/cocktail-list/cocktail-list.component';
 
 
 const ROUTES: Routes = [
@@ -14,7 +15,8 @@ const ROUTES: Routes = [
   { path: 'user-profile', component: UserProfileComponent },
   { path: 'catalog', component: CatalogComponent },
   { path: 'list-kitten', component: AppListKittenComponent },
-  { path: 'create-kitten', component: AppCreateKittenComponent },
+  { path: 'search-movie', component: SearchMovieComponent },
+  { path: 'list-cocktail', component: CocktailListComponent },
 ];
 
 @NgModule({
