@@ -1,0 +1,27 @@
+[
+    {
+      "name": "cocktail 1",
+      "price": "43",
+      "img": "url 1"
+    },
+    {
+      "name": "cocktail 2",
+      "price": "53",
+      "img": "url 2"
+    },
+    {
+      "name": "cocktail 3",
+      "price": "23",
+      "img": "url 3"
+    },
+    {
+      "name": "cocktail 4",
+      "price": "83",
+      "img": "url 4"
+    },
+    {
+      "name": "cocktail 5",
+      "price": "93",
+      "img": "url 5"
+    }
+  ]

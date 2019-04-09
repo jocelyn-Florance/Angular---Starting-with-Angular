@@ -1,55 +1,97 @@
+<app-navbar></app-navbar>
+
 <div class="container">
 
-  <h1>Search movie</h1>
+    <h1>Search movie</h1>
 
-  <form (ngSubmit)="orderForm.valid && onSubmit()" [formGroup]="orderForm" #myForm="ngForm">
-    <div>
-      Form submitted ? {{myForm.submitted}}
-      Form valid ? {{orderForm.valid}}
-      Form invalid ? {{orderForm.valid}}
-    </div>
-    <div>
-      <label for="identifiant">Identifiant</label>
-      <input id="identifiant" name="identifiant" type="text" formControlName="identifiant">
-    </div>
-    <div *ngIf="orderForm.controls.identifiant.errors">
-      <span *ngIf="orderForm.controls.identifiant.errors.required">Le champ identifiant est requis</span>
-    </div>
-    <div>
-      <label for="titre">Titre</label>
-      <input id="titre" name="titre" type="text" formControlName="titre">
-    </div>
-    <div *ngIf="orderForm.controls.titre.errors">
-      <span *ngIf="orderForm.controls.titre.errors.required">Le champ titre est requis</span>
-      <span *ngIf="orderForm.controls.titre.errors.max">La quantité maximal doit être inférieur à 5</span>
-    </div>
-    <div>
-      <label for="type"></label>
+    <form (ngSubmit)="onSubmit()" [formGroup]="orderForm">
 
-    </div>
-    <div *ngIf="orderForm.controls.type.errors">
-      <span *ngIf="orderForm.controls.type.errors.required">Le champ type est requis</span>
-    </div>
-    <div>
-      <label for="years">Years</label>
-      <input id="years" name="yaers" type="number" formControlName="years">
-    </div>
-    <div *ngIf="orderForm.controls.years.errors">
-      <span *ngIf="orderForm.controls.years.errors.required">Le champ years est requis</span>
-    </div>
-    <div>
-      <label formArrayName="fiche" *ngFor="let fiches of orderForm.controls.fiche.controls; let i = index">
-        <input type="checkbox" [formControlName]="i">
-        {{fiche[i].name}}
-      </label>
-    </div>
-    <div *ngIf="orderForm.controls.fiche.errors">
-      <span *ngIf="orderForm.controls.fiche.errors.required">Le champ fiche est requis</span>
-      <span *ngIf="orderForm.controls.fiche.errors.email">L'adresse email doit être valide</span>
-    </div>
+        <div class="form-group">
+            <label for="ident">Identifiant</label>
+            <input [ngClass]="orderForm.controls.ident.errors ? 'is-invalid' : 'is-valid'" class="form-control"
+                   id="ident" name="ident" type="text" formControlName="ident">
+            <div class="valid-feedback">
+                <div *ngIf="orderForm.controls.ident">
+                    <span *ngIf="orderForm.controls.ident">Le champ identifiant est bon</span>
+                </div>
+            </div>
+            <div class="invalid-feedback">
+                <div *ngIf="orderForm.controls.ident.errors">
+                    <span *ngIf="orderForm.controls.ident.errors.required">Le champ identifiant est requis</span>
+                </div>
+            </div>
+        </div>
 
-    <button type="reset">Restaurer</button>
-    <button type="submit">Sauvegarder</button>
-  </form>
+        <div class="form-group">
+            <label for="titre">Titre</label>
+            <input [ngClass]="orderForm.controls.titre.errors ? 'is-invalid' : 'is-valid'" class="form-control"
+                   id="titre" name="titre" type="text" formControlName="titre">
+            <div class="valid-feedback">
+                <div *ngIf="orderForm.controls.titre">
+                    <span *ngIf="orderForm.controls.titre">Le champ titre est bon</span>
+                </div>
+            </div>
+            <div class="invalid-feedback">
+                <div *ngIf="orderForm.controls.titre.errors">
+                    <span *ngIf="orderForm.controls.titre.errors.required">Le champ titre est requis</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="type">Types</label>
+            <select id="type" [ngClass]="orderForm.controls.type.errors ? 'is-invalid' : 'is-valid'"
+                    class="custom-select" formControlName="type">
+                <option *ngFor="let type of types" [ngValue]="type.name">
+                    {{ type.name }}
+                </option>
+            </select>
+        </div>
+        <div class="invalid-feedback">
+            <div *ngIf="orderForm.controls.type.errors">
+            <span class="alert alert-danger"
+                  *ngIf="orderForm.controls.type.errors.required">Le champ type est requis</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="years">Years</label>
+            <input [ngClass]="orderForm.controls.years.errors ? 'is-invalid' : 'is-valid'" class="form-control"
+                   id="years" name="years" type="number" formControlName="years">
+            <div class="valid-feedback">
+                <div *ngIf="orderForm.controls.years">
+                    <span *ngIf="orderForm.controls.years">Le champ years est bon</span>
+                </div>
+            </div>
+            <div class="invalid-feedback">
+                <div *ngIf="orderForm.controls.years.errors">
+                    <span *ngIf="orderForm.controls.years.errors.required">Le champ years est requis</span>
+                    <span *ngIf="orderForm.controls.years.errors.min || orderForm.controls.years.errors.max">L'année doit être comprise entre 1900 et 2019</span>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="orderForm.controls.ident.valid">
+            <div class="form-group">
+                <label for="fiche">Fiche</label>
+                <select id="fiche" [ngClass]="orderForm.controls.fiche.errors ? 'is-invalid' : 'is-valid'" class="custom-select"
+                        formControlName="fiche" required>
+                    <option *ngFor="let fiche of fiches" [ngValue]="fiche.name">
+                        {{ fiche.name }}
+                    </option>
+                </select>
+            </div>
+            <div class="invalid-feedback">
+                <div *ngIf="orderForm.controls.fiche.errors">
+            <span class="alert alert-danger"
+                  *ngIf="orderForm.controls.fiche.errors.required">Le champ type est requis</span>
+                </div>
+            </div>
+        </div>
+
+        <button class="btn btn-info m-3" type="reset">Restaurer</button>
+        <button class="btn btn-success" type="submit">Sauvegarder</button>
+    </form>
+
 
 </div>

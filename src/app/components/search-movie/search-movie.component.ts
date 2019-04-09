@@ -1,37 +1,47 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators, FormGroup, FormArray, FormControl } from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, Validators, FormGroup, FormArray, FormControl} from '@angular/forms';
 
 @Component({
-  selector: 'app-search-movie',
-  templateUrl: './search-movie.component.html',
-  styleUrls: ['./search-movie.component.css']
+    selector: 'app-search-movie',
+    templateUrl: './search-movie.component.html',
+    styleUrls: ['./search-movie.component.css']
 })
 export class SearchMovieComponent implements OnInit {
-  type = [
-    { name: 'film' },
-    { name: 'serie' },
-    { name: 'episode' }
-  ];
-  fiche = [
-    { name: 'complete' },
-    { name: 'courte' },
-  ];
+    types = [
+        {name: 'Film'},
+        {name: 'Serie'},
+        {name: 'Episode'},
+    ];
+    fiches = [
+        {name: 'complete'},
+        {name: 'courte'},
+    ];
 
-  orderForm = this.fb.group({
-    identifiant: ['', Validators.required],
-    titre: ['', [Validators.required, Validators.max(5)]],
-    type: new FormArray([]),
-    years: ['', [Validators.required, Validators.email]],
-    fiche: new FormArray([]),
-  });
+    orderForm = this.fb.group({
+        ident: ['', [Validators.required], this.isRequiredValidator('aaa', 'bbb')],
+        titre: ['', [Validators.required]],
+        type: new FormControl(this.types[1].name),
+        years: ['', [Validators.required, Validators.min(1900), Validators.max(2019)]],
+        fiche: new FormControl(this.fiches[1].name),
+    });
 
-  constructor(private fb: FormBuilder) {
-  }
+    constructor(private fb: FormBuilder) {
+    }
 
-  ngOnInit() {
-    console.log('oderForm submitted : ', this.orderForm.value);
-  }
+    ngOnInit() {
+    }
 
+    onSubmit() {
+        console.log(JSON.stringify(this.orderForm.value));
+    }
+
+    public isRequiredValidator(ident: string, titre: string) {
+        console.log(ident, titre);
+    }
+
+    public rangeDateValidator(min: number, max: number) {
+
+    }
 
 
 }
