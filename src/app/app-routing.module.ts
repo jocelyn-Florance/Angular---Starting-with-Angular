@@ -7,6 +7,7 @@ import {CatalogComponent} from './components/catalog/catalog.component';
 import {AppListKittenComponent} from './components/app-list-kitten/app-list-kitten.component';
 import {SearchMovieComponent} from './components/search-movie/search-movie.component';
 import {CocktailListComponent} from './components/cocktail-list/cocktail-list.component';
+import {NasaComponent} from './components/nasa/nasa.component';
 
 
 const ROUTES: Routes = [
@@ -17,6 +18,7 @@ const ROUTES: Routes = [
   { path: 'list-kitten', component: AppListKittenComponent },
   { path: 'search-movie', component: SearchMovieComponent },
   { path: 'list-cocktail', component: CocktailListComponent },
+  { path: 'nasa', component: NasaComponent },
 ];
 
 @NgModule({

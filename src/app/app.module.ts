@@ -16,6 +16,7 @@ import { AppCreateKittenComponent } from './components/app-create-kitten/app-cre
 import { SearchMovieComponent } from './components/search-movie/search-movie.component';
 import { CocktailListComponent } from './components/cocktail-list/cocktail-list.component';
 import { CocktailService } from './services/cocktail/cocktail.service';
+import { NasaComponent } from './components/nasa/nasa.component';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { CocktailService } from './services/cocktail/cocktail.service';
         AppCreateKittenComponent,
         SearchMovieComponent,
         CocktailListComponent,
+        NasaComponent,
     ],
     imports: [
         BrowserModule,
