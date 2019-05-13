@@ -1,5 +1,15 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, Validators, FormGroup, FormArray, FormControl} from '@angular/forms';
+import {
+    FormBuilder,
+    Validators,
+    FormGroup,
+    FormArray,
+    FormControl,
+    AbstractControl,
+    ValidationErrors,
+    ValidatorFn
+
+} from '@angular/forms';
 
 @Component({
     selector: 'app-search-movie',
@@ -7,21 +17,27 @@ import {FormBuilder, Validators, FormGroup, FormArray, FormControl} from '@angul
     styleUrls: ['./search-movie.component.css']
 })
 export class SearchMovieComponent implements OnInit {
+    min = 1900;
+    max = 2018;
     types = [
-        {name: 'Film'},
-        {name: 'Serie'},
-        {name: 'Episode'},
+        {name: 'Film', id: 'film'},
+        {name: 'Serie', id: 'serie'},
+        {name: 'Episode', id: 'episode'},
     ];
     fiches = [
-        {name: 'complete'},
-        {name: 'courte'},
+        {name: 'complete', id: 'complete'},
+        {name: 'courte', id: 'courte'},
     ];
 
     orderForm = this.fb.group({
-        ident: ['', [Validators.required], this.isRequiredValidator('aaa', 'bbb')],
-        titre: ['', [Validators.required]],
+        user: this.fb.group({
+                ident: [''],
+                titre: [''],
+            },
+            {validators: this.isRequiredValidator('ident', 'titre')},
+        ),
         type: new FormControl(this.types[1].name),
-        years: ['', [Validators.required, Validators.min(1900), Validators.max(2019)]],
+        years: ['', this.rangeDateValidator(this.min, this.max)],
         fiche: new FormControl(this.fiches[1].name),
     });
 
@@ -29,18 +45,32 @@ export class SearchMovieComponent implements OnInit {
     }
 
     ngOnInit() {
+
     }
 
     onSubmit() {
         console.log(JSON.stringify(this.orderForm.value));
     }
 
-    public isRequiredValidator(ident: string, titre: string) {
-        console.log(ident, titre);
+    isRequiredValidator(req1, req2): ValidatorFn {
+        return (control: AbstractControl): ValidationErrors | null => {
+            if (control.get(req1).value !== '' && control.get(req2).value !== '') {
+                return null;
+            } else {
+                return {isRequired: {actual: control.get(req1).value, expected: control.get(req2).value}};
+            }
+        };
     }
 
-    public rangeDateValidator(min: number, max: number) {
-
+    rangeDateValidator(min: number, max: number): ValidatorFn {
+        return (control: AbstractControl): ValidationErrors | null => {
+            const year = control.value;
+            if (min <= year && year <= max) {
+                return null;
+            } else {
+                return {min: {value: {min, max}}};
+            }
+        };
     }
 
 

@@ -6,37 +6,43 @@
 
     <form (ngSubmit)="onSubmit()" [formGroup]="orderForm">
 
-        <div class="form-group">
-            <label for="ident">Identifiant</label>
-            <input [ngClass]="orderForm.controls.ident.errors ? 'is-invalid' : 'is-valid'" class="form-control"
-                   id="ident" name="ident" type="text" formControlName="ident">
-            <div class="valid-feedback">
-                <div *ngIf="orderForm.controls.ident">
-                    <span *ngIf="orderForm.controls.ident">Le champ identifiant est bon</span>
+        <div formGroupName="user">
+
+            <div class="form-group">
+                <label for="ident">Identifiant</label>
+                <input [ngClass]="orderForm.get('user').get('ident').errors ? 'is-invalid' : 'is-valid'" class="form-control"
+                       id="ident" name="ident" type="text" formControlName="ident">
+                <div class="valid-feedback">
+                    <div *ngIf="orderForm.get('user').get('ident')">
+                        <span *ngIf="orderForm.get('user').get('ident')">Le champ identifiant est bon</span>
+                    </div>
+                </div>
+                <div class="invalid-feedback">
+                    <div *ngIf="orderForm.get('user').get('ident').errors">
+                        <span *ngIf="orderForm.get('user').get('ident').errors.required">Le champ identifiant est requis</span>
+                    </div>
                 </div>
             </div>
-            <div class="invalid-feedback">
-                <div *ngIf="orderForm.controls.ident.errors">
-                    <span *ngIf="orderForm.controls.ident.errors.required">Le champ identifiant est requis</span>
+
+
+            <div class="form-group">
+                <label for="titre">Titre</label>
+                <input [ngClass]="orderForm.get('user').get('titre').errors ? 'is-invalid' : 'is-valid'" class="form-control"
+                       id="titre" name="titre" type="text" formControlName="titre">
+                <div class="valid-feedback">
+                    <div *ngIf="orderForm.get('user').get('titre')">
+                        <span *ngIf="orderForm.get('user').get('titre')">Le champ titre est bon</span>
+                    </div>
+                </div>
+                <div class="invalid-feedback">
+                    <div *ngIf="orderForm.get('user').get('titre').errors">
+                        <span *ngIf="orderForm.get('user').get('titre').errors.required">Le champ titre est requis</span>
+                    </div>
                 </div>
             </div>
+
         </div>
 
-        <div class="form-group">
-            <label for="titre">Titre</label>
-            <input [ngClass]="orderForm.controls.titre.errors ? 'is-invalid' : 'is-valid'" class="form-control"
-                   id="titre" name="titre" type="text" formControlName="titre">
-            <div class="valid-feedback">
-                <div *ngIf="orderForm.controls.titre">
-                    <span *ngIf="orderForm.controls.titre">Le champ titre est bon</span>
-                </div>
-            </div>
-            <div class="invalid-feedback">
-                <div *ngIf="orderForm.controls.titre.errors">
-                    <span *ngIf="orderForm.controls.titre.errors.required">Le champ titre est requis</span>
-                </div>
-            </div>
-        </div>
 
         <div class="form-group">
             <label for="type">Types</label>
@@ -71,10 +77,11 @@
             </div>
         </div>
 
-        <div *ngIf="orderForm.controls.ident.valid">
+        <div *ngIf="orderForm.get('user').get('ident').valid">
             <div class="form-group">
                 <label for="fiche">Fiche</label>
-                <select id="fiche" [ngClass]="orderForm.controls.fiche.errors ? 'is-invalid' : 'is-valid'" class="custom-select"
+                <select id="fiche" [ngClass]="orderForm.controls.fiche.errors ? 'is-invalid' : 'is-valid'"
+                        class="custom-select"
                         formControlName="fiche" required>
                     <option *ngFor="let fiche of fiches" [ngValue]="fiche.name">
                         {{ fiche.name }}
@@ -90,6 +97,7 @@
         </div>
 
         <button class="btn btn-info m-3" type="reset">Restaurer</button>
+
         <button class="btn btn-success" type="submit">Sauvegarder</button>
     </form>
 
